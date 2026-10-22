@@ -1,5 +1,366 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fa"><title>ETF Studio | 미국 ETF 투자 시뮬레이터</title><style>@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@400;500;600;700;800;900&display=swap');
-:root{--ink:#171b27;--muted:#808695;--line:#e9ecf1;--blue:#3859e9;--bg:#f7f8fa;--green:#0b946b;--red:#df5262}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Nunito","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:0 30px}.top{background:#fff;border-bottom:1px solid var(--line)}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:20px;font-weight:850;letter-spacing:-.8px}.brand em{font-style:normal;color:var(--blue)}.nav small{color:var(--muted)}.hero{padding:62px 0 26px}.eyebrow{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:2px}.hero h1{font-family:"Jua","Apple SD Gothic Neo",sans-serif;font-weight:400;font-size:clamp(30px,4vw,48px);letter-spacing:-2px;line-height:1.22;margin:12px 0}.hero p{color:#737d8d;margin:0}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.chip{border:1px solid #e5e9f0;border-radius:100px;background:#fff;padding:7px 12px;font-size:12px;color:#667085}.index-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0 34px}.index{background:#fff;border:1px solid var(--line);padding:24px 28px;border-radius:22px;box-shadow:0 8px 30px #18203805}.index .name{font-size:13px;color:#737c8c;font-weight:700}.index .number{font-size:29px;font-weight:850;letter-spacing:-1px;margin-top:6px}.index .change{font-size:12px;color:var(--muted)}.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:42px 0 16px;gap:12px}.sectionhead h2{font-family:"Jua","Apple SD Gothic Neo",sans-serif;font-weight:400;font-size:23px;letter-spacing:-.8px;margin:0}.sectionhead p{font-size:13px;color:var(--muted);margin:4px 0 0}.pill{font-size:11px;border:1px solid var(--line);background:white;color:#8b91a0;padding:6px 10px;border-radius:50px}.workspace{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 12px 34px #18203805}.panel-title{font-size:15px;font-weight:800;margin-bottom:16px}.switch{display:flex;gap:5px;background:#f2f4f8;padding:5px;border-radius:12px;width:max-content;max-width:100%}.switch button{border:0;background:transparent;color:#818897;border-radius:9px;padding:9px 22px;font-weight:750}.switch button.active{background:#fff;color:var(--ink);box-shadow:0 2px 9px #00000012}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:18px}.field label{display:block;font-size:12px;color:#737b89;font-weight:650;margin:10px 0 7px}.field input,.field select{width:100%;border:1px solid #e5e9ef;border-radius:11px;background:#fbfcfe;padding:12px 13px;outline:0;color:#242936;min-width:0}.field input:focus,.field select:focus{border-color:#8598ff;box-shadow:0 0 0 3px #3859e916}.field small{font-size:11px;color:#9299a6}.results{background:#151d32;color:#fff;border-radius:24px;padding:30px;position:sticky;top:20px;overflow:hidden}.results:before{content:"";position:absolute;width:260px;height:260px;background:#5478ff20;filter:blur(55px);border-radius:50%;right:-100px;top:-110px;pointer-events:none}.results .caption{color:#a9b6d1;font-size:13px}.results .big{font-size:clamp(30px,3.4vw,45px);font-weight:850;letter-spacing:-1.8px;line-height:1.35;margin:10px 0 18px;overflow-wrap:anywhere}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid #ffffff25;padding-top:20px}.metrics small{display:block;color:#a7b2cb;font-size:12px}.metrics strong{font-size:19px;letter-spacing:-.4px}.accent{color:#8de2bc}.plot{margin-top:22px}.plot svg{width:100%;height:auto;display:block}.plot-note{display:flex;justify-content:space-between;color:#aab4ca;font-size:11px}.details{margin-top:18px;border-top:1px solid #ffffff22;padding-top:12px}.detail{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:13px}.detail span{color:#aab4ca}.detail b{text-align:right}.divbox{background:#f3f6ff;border-radius:16px;padding:18px;margin-top:20px}.divbox .amount{font-size:31px;color:#294bd5;font-weight:850;letter-spacing:-1px}.divbox small{color:#7b86a0}.notice{font-size:12px;color:#9097a5;line-height:1.8;margin:22px 0 70px}.error{color:#d85a69!important}.ok{color:var(--green)!important}@media(max-width:850px){.workspace{grid-template-columns:1fr}.results{position:static}.shell{padding:0 17px}.hero{padding:42px 0 16px}.panel,.results{padding:22px}.index{padding:20px}.index .number{font-size:23px}}@media(max-width:480px){.index-grid{gap:10px}.index{padding:16px;border-radius:16px}.index .number{font-size:20px}.form-grid{gap:5px 11px}.field input,.field select{padding:11px 9px}.hero h1{letter-spacing:-1.5px}.nav small{display:none}}
-</style></head><body><header class="top"><div class="shell nav"><div class="brand">ETF <em>STUDIO.</em></div><small>US MARKET · INVESTMENT SIMULATOR</small></div></header><main class="shell"><section class="hero"><div class="eyebrow">SMART INVESTMENT PLANNER</div><h1>투자의 미래를,<br>숫자로 미리 그려보세요.</h1><p>미국 ETF 장기투자와 월분배금 목표를 한 화면에서 계산하세요.</p><div class="chips"><span class="chip">QLD · SPY</span><span class="chip">QQQI · JEPQ</span><span class="chip" id="fxStatus">환율 자동 조회 대기</span><span class="chip">복리 시뮬레이션</span></div></section><div class="index-grid"><article class="index"><div class="name">NASDAQ-100 <span style="float:right;color:#a1a8b3">NDX</span></div><div class="number" id="nas">데이터 확인 중</div><div class="change" id="naschg">시세 연결 확인 중</div></article><article class="index"><div class="name">S&P 500 <span style="float:right;color:#a1a8b3">SPX</span></div><div class="number" id="sp">데이터 확인 중</div><div class="change" id="spchg">시세 연결 확인 중</div></article></div><div class="sectionhead"><div><h2>장기투자 시뮬레이터</h2><p>적립식 투자와 복리 성장의 예상 결과를 확인하세요.</p></div><span class="pill" id="marketBadge">시세 연결 대기</span></div><section class="workspace"><div class="panel"><div class="panel-title">투자 조건 설정</div><div class="switch"><button id="qld" class="active" onclick="pick('QLD')">QLD</button><button id="spy" onclick="pick('SPY')">SPY</button></div><div class="form-grid"><div class="field"><label>투자 방식</label><select id="mode"><option value="lump">거치식</option><option value="monthly" selected>매월 적립식</option><option value="daily">거래일마다 적립 (월 20일)</option></select></div><div class="field"><label>투자 기간 (년)</label><input id="years" type="number" min="1" max="50" value="10"></div><div class="field"><label>초기 투자금 (원)</label><input id="initial" type="number" min="0" value="10000000"></div><div class="field"><label id="contributionLabel">월 적립금 (원)</label><input id="monthly" type="number" min="0" value="600000"></div><div class="field"><label>연평균 수익률 가정 (%)</label><input id="rate" type="number" value="10" step=".1"><small id="hist">직접 입력한 시나리오 수익률</small></div><div class="field"><label>목표 평가금액 (원)</label><input id="goal" type="number" min="0" value="100000000"></div><div class="field"><label>ETF 1주 가격 (USD)</label><input id="price" type="number" min="0" step=".01" placeholder="직접 입력"></div><div class="field"><label>환율 (KRW/USD)</label><input id="fx" type="number" value="1400" step=".1"></div><div class="field"><label>현재 보유 수량 (주)</label><input id="heldShares" type="number" min="0" value="0"></div><div class="field"><label>목표 보유 수량 (주)</label><input id="targetShares" type="number" min="0" value="100"></div></div><p class="notice" style="margin:14px 0 0">※ 가격이 비어 있으면 주식 수량 계산을 표시하지 않습니다. 연 수익률은 가정값이며 과거 CAGR은 참고 지표입니다.</p></div><aside class="results"><div class="caption">투자 기간 종료 시 예상 평가금액</div><div class="big" id="future">—</div><div class="metrics"><div><small>총 투자 원금</small><strong id="principal">—</strong></div><div><small>예상 수익</small><strong class="accent" id="profit">—</strong></div><div><small>원금 대비 수익률</small><strong id="roi">—</strong></div><div><small>목표 달성 시점</small><strong id="when">—</strong></div></div><div class="plot"><svg id="chart" viewBox="0 0 480 190" role="img" aria-label="예상 자산 성장 추이"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#86a7ff" stop-opacity=".35"/><stop offset="1" stop-color="#86a7ff" stop-opacity="0"/></linearGradient></defs><path id="area" fill="url(#fill)"/><path id="line" fill="none" stroke="#8cafff" stroke-width="3" stroke-linecap="round"/></svg><div class="plot-note"><span>현재</span><span id="chartEnd">10년 후</span></div></div><div class="details"><div class="detail"><span>보유 주식 평가액 (USD / KRW)</span><b id="heldValue">가격 입력 필요</b></div><div class="detail"><span>초기 자금 매수 가능 수량</span><b id="buyShares">가격 입력 필요</b></div><div class="detail"><span>목표 주식 수 필요 금액</span><b id="sharesCost">가격 입력 필요</b></div></div></aside></section><div class="sectionhead"><div><h2>월분배금 플래너</h2><p>보유 주식 수에 따른 예상 현금흐름과 목표 자금을 계산하세요.</p></div><span class="pill">분배금 변동 가능</span></div><section class="workspace"><div class="panel"><div class="panel-title">분배 ETF 선택</div><div class="switch"><button id="qqqi" class="active" onclick="pickDiv('QQQI')">QQQI</button><button id="jepq" onclick="pickDiv('JEPQ')">JEPQ</button></div><div class="form-grid"><div class="field"><label>보유 주식 수 (주)</label><input id="shares" type="number" min="0" value="100"></div><div class="field"><label>주당 현재가 (USD)</label><input id="divPrice" type="number" min="0" step=".01" placeholder="직접 입력"></div><div class="field"><label>주당 월분배금 (USD)</label><input id="distribution" type="number" min="0" step=".001" placeholder="직접 입력"><small id="distStatus">최근 분배금 조회 대기</small></div><div class="field"><label>목표 월 세후 분배금 (원)</label><input id="incomeGoal" type="number" min="0" value="500000"></div><div class="field"><label>환율 (KRW/USD)</label><input id="divFx" type="number" value="1400"></div><div class="field"><label>원천징수율 가정 (%)</label><input id="tax" type="number" min="0" max="100" value="15"></div></div><p class="notice" style="margin:14px 0 0">※ 원천징수율 15%는 단순 예시입니다. 분배금 성격·세법·개인 상황에 따라 실제 세금은 달라집니다.</p></div><aside class="panel"><div class="panel-title">예상 월 현금흐름</div><div class="divbox"><small>월 세후 예상 분배금</small><div class="amount" id="netMonthly">—</div><small>입력한 주당 분배금이 12개월 유지된다는 가정</small></div><div class="details" style="border-color:#e8ebf1"><div class="detail"><span>연 세후 예상 분배금</span><b id="netAnnual">—</b></div><div class="detail"><span>현재 보유분 평가금액 (USD / KRW)</span><b id="holdingValue">가격 입력 필요</b></div><div class="detail"><span>월 목표 달성 필요 주식</span><b id="neededShares">—</b></div><div class="detail"><span>목표 달성 필요 투자금</span><b id="neededCapital">가격 입력 필요</b></div></div></aside></section><div class="notice" id="status">시세 연동 상태를 확인 중입니다. API 실패 시 가격과 분배금은 자동 입력되지 않으며 수동으로 계산할 수 있습니다. 환율은 공개 환율 API를 통해 조회하며 지연될 수 있습니다. QLD는 일일 2배 레버리지 ETF로 장기 수익률이 단순 2배가 아닙니다. 모든 예상치는 투자 권유가 아닙니다.</div></main><script>
-const $=x=>document.getElementById(x),v=x=>Math.max(0,Number($(x).value)||0),fmt=x=>Math.round(x).toLocaleString('ko-KR'),won=x=>fmt(x)+'원';let etf='QLD',divEtf='QQQI';function pick(x){etf=x;['QLD','SPY'].forEach(y=>$(y.toLowerCase()).classList.toggle('active',x===y));$('price').value='';$('hist').textContent='과거 데이터 조회 대기';calc();loadEtf()}function pickDiv(x){divEtf=x;['QQQI','JEPQ'].forEach(y=>$(y.toLowerCase()).classList.toggle('active',x===y));$('divPrice').value='';$('distribution').value='';$('distStatus').textContent='최근 분배금 조회 대기';calc();loadDiv()}function calc(){const mode=$('mode').value,months=Math.max(0,Math.min(600,Math.round(v('years')*12))),deposit=mode==='lump'?0:v('monthly')*(mode==='daily'?20:1),r=Math.pow(Math.max(.001,1+Number($('rate').value)/100),1/12)-1;let amount=v('initial'),paid=amount,values=[amount];for(let i=0;i<months;i++){amount=amount*(1+r)+deposit;paid+=deposit;if((i+1)%12===0||i===months-1)values.push(amount)}$('future').textContent=won(amount);$('principal').textContent=won(paid);$('profit').textContent=won(amount-paid);$('roi').textContent=(paid?(amount/paid-1)*100:0).toFixed(1)+'%';let goal=v('goal'),g=v('initial'),steps=0;while(g<goal&&steps<1200){g=g*(1+r)+deposit;steps++}let target=g<goal?'가정상 미달성':steps===0?'이미 달성':Math.floor(steps/12)+'년 '+steps%12+'개월';$('when').textContent=target;let unit=v('price')*v('fx');$('heldValue').textContent=v('price')?('fmt(Math.floor(v('initial')/unit))+'주':'가격 입력 필요';$('sharesCost').textContent=unit?won(unit*v('targetShares')):'가격 입력 필요';$('contributionLabel').textContent=mode==='daily'?'거래일당 투자금 (원)':mode==='lump'?'적립금 (거치식 미사용)':'월 적립금 (원)';$('chartEnd').textContent=v('years')+'년 후';let max=Math.max(1,...values),points=values.map((n,i)=>[10+(460*i/Math.max(1,values.length-1)),175-150*n/max]);$('line').setAttribute('d',points.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' '));$('area').setAttribute('d',points.length?'M10 175 '+points.map(p=>'L'+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ')+' L470 175 Z':'');let gross=v('shares')*v('distribution')*v('divFx'),net=gross*(1-Math.min(100,v('tax'))/100),perShare=v('distribution')*v('divFx')*(1-Math.min(100,v('tax'))/100),needed=perShare>0?Math.ceil(v('incomeGoal')/perShare):0,divUnit=v('divPrice')*v('divFx');$('netMonthly').textContent=v('distribution')?won(net):'분배금 입력 필요';$('netAnnual').textContent=v('distribution')?won(net*12):'—';$('holdingValue').textContent=v('divPrice')?'$('neededShares').textContent=perShare?fmt(needed)+'주':'분배금 입력 필요';$('neededCapital').textContent=perShare&&divUnit?won(needed*divUnit):'가격·분배금 입력 필요'}document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',calc));async function fetchMarket(s){const res=await fetch('/api/market?symbol='+encodeURIComponent(s),{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);const d=await res.json();if(!d||!Number.isFinite(d.price))throw Error('가격 없음');return d}async function loadIndex(symbol,id){try{let d=await fetchMarket(symbol);$(id).textContent=Number(d.price).toLocaleString('en-US',{maximumFractionDigits:2});$(id+'chg').textContent=Number.isFinite(d.changePct)?(d.changePct>=0?'+':'')+d.changePct.toFixed(2)+'% · 전일 대비':'가격 조회됨 · 등락률 없음';$(id+'chg').className='change '+(d.changePct>=0?'ok':'error')}catch(e){$(id).textContent='시세 연결 안 됨';$(id+'chg').textContent='현재 API 응답 확인 필요';$(id+'chg').className='change error'}}async function loadEtf(){let selected=etf;try{let d=await fetchMarket(selected);if(selected!==etf)return;$('price').value=d.price;if(Number.isFinite(d.cagr))$('hist').textContent='과거 '+d.years.toFixed(1)+'년 가격 CAGR '+d.cagr.toFixed(2)+'% (배당 제외)';$('marketBadge').textContent='가격 데이터 연결됨';$('marketBadge').className='pill ok';calc()}catch(e){if(selected!==etf)return;$('marketBadge').textContent='시세 API 확인 필요';$('marketBadge').className='pill error';$('hist').textContent='시세 조회 실패 · 수익률 직접 설정 가능';calc()}}async function loadDiv(){let selected=divEtf;try{let d=await fetchMarket(selected);if(selected!==divEtf)return;$('divPrice').value=d.price;if(Number.isFinite(d.lastDistribution)){$('distribution').value=d.lastDistribution;$('distStatus').textContent='최근 1회 분배금 기준 (매월 변동)'}else $('distStatus').textContent='분배금 데이터 없음 · 직접 입력';calc()}catch(e){if(selected!==divEtf)return;$('distStatus').textContent='API 연결 실패 · 직접 입력';calc()}}async function loadFx(){try{const r=await fetch('https://open.er-api.com/v6/latest/USD');if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();const rate=Number(d.rates?.KRW);if(d.result!=='success'||!Number.isFinite(rate)||rate<=0)throw Error('invalid rate');$('fx').value=rate.toFixed(2);$('divFx').value=rate.toFixed(2);$('fxStatus').textContent='USD/KRW '+rate.toFixed(2)+' · 자동 조회';$('fxStatus').title='ExchangeRate-API 공개 환율 (지연 가능) · '+(d.time_last_update_utc||'');calc()}catch(e){$('fxStatus').textContent='환율 자동 조회 실패 · 수동 입력';$('fxStatus').className='chip error'}}calc();Promise.all([loadFx(),loadIndex('^NDX','nas'),loadIndex('^GSPC','sp'),loadEtf(),loadDiv()]);
-</script></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ETF STUDIO — 미국 ETF 투자 시뮬레이터</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{
+--bg:#F4F5F7;--card:#FFF;--t1:#191F28;--t2:#4E5968;--t3:#8B95A1;--t4:#B0B8C1;
+--blue:#3182F6;--blue2:#E8F3FF;--grn:#00C471;--grn2:#E8FAF0;--red:#F04452;--red2:#FFF0F0;
+--bor:#E5E8EB;--inp:#F2F4F6;--dk:#17171C;
+--f:'Pretendard',-apple-system,'Segoe UI',sans-serif;--fn:'Nunito',var(--f);
+--r:16px;--rs:12px;--sh:0 2px 8px rgba(0,0,0,.04);--sl:0 8px 28px rgba(0,0,0,.12);
+color-scheme:light;box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#111113;--card:#1B1C1F;--t1:#ECECED;--t2:#A5A5A8;--t3:#6B6B6F;--t4:#4A4A4E;
+--blue:#4B94F7;--blue2:#1A2744;--grn:#3DD68C;--grn2:#0F2A1F;--red:#FF5F6D;--red2:#2D1518;
+--bor:#2C2D30;--inp:#222326;--dk:#0A0A0C;
+--sh:0 2px 8px rgba(0,0,0,.15);--sl:0 8px 28px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+--bg:#111113;--card:#1B1C1F;--t1:#ECECED;--t2:#A5A5A8;--t3:#6B6B6F;--t4:#4A4A4E;
+--blue:#4B94F7;--blue2:#1A2744;--grn:#3DD68C;--grn2:#0F2A1F;--red:#FF5F6D;--red2:#2D1518;
+--bor:#2C2D30;--inp:#222326;--dk:#0A0A0C;
+--sh:0 2px 8px rgba(0,0,0,.15);--sl:0 8px 28px rgba(0,0,0,.3);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:env(safe-area-inset-top,0)}html,body{height:100%}
+body{font-family:var(--f);background:var(--bg);color:var(--t1);line-height:1.65;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+.w{max-width:1080px;margin:0 auto;padding:0 24px}
+
+header{padding:18px 0;background:var(--card);border-bottom:1px solid var(--bor)}
+header .w{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--fn);font-weight:800;font-size:20px;color:var(--blue);letter-spacing:-.3px}
+.logo span{color:var(--t4);font-weight:600;font-size:11px;margin-left:10px;letter-spacing:.5px}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.status{font-size:11px;color:var(--t4);padding:4px 10px;border-radius:8px;background:var(--inp)}
+.status.ok{color:var(--grn);background:var(--grn2)}
+.rbtn{padding:7px 14px;border-radius:10px;border:1.5px solid var(--blue);background:transparent;color:var(--blue);font-weight:700;font-size:12px;cursor:pointer;font-family:var(--f);transition:all .15s}
+.rbtn:hover{background:var(--blue);color:#fff}
+
+.hero{padding:52px 0 40px;text-align:center}
+.hero h1{font-size:32px;font-weight:700;line-height:1.4;letter-spacing:-.03em;margin-bottom:10px}
+.hero p{font-size:15px;color:var(--t3);max-width:440px;margin:0 auto 24px;line-height:1.7}
+.pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.pill{padding:5px 13px;background:var(--blue2);color:var(--blue);border-radius:20px;font-size:11px;font-weight:600}
+
+.mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.mk{background:var(--card);border-radius:var(--r);padding:16px 18px;border:1px solid var(--bor);box-shadow:var(--sh)}
+.mk-lb{font-size:11px;font-weight:600;color:var(--t3);letter-spacing:.3px;margin-bottom:5px}
+.mk-v{font-family:var(--fn);font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px}
+.mk-c{font-family:var(--fn);font-size:12px;font-weight:700}
+.mk-n{font-size:10px;color:var(--t4);margin-top:4px}
+.mk-i{margin-top:6px;display:flex;align-items:center;gap:5px}
+.mk-i input{width:100px;padding:5px 7px;border:1px solid var(--bor);border-radius:7px;font-family:var(--fn);font-size:12px;font-weight:600;background:var(--inp);color:var(--t1);text-align:right}
+.mk-i input:focus{outline:none;border-color:var(--blue)}
+.up{color:var(--grn)}.dn{color:var(--red)}
+.skel{background:linear-gradient(90deg,var(--inp) 25%,var(--bor) 50%,var(--inp) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+.eg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px}
+.ec{background:var(--card);border-radius:var(--r);padding:16px;border:1px solid var(--bor);box-shadow:var(--sh);transition:box-shadow .15s}
+.ec:hover{box-shadow:var(--sl)}
+.ec-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.ec-tk{font-family:var(--fn);font-weight:800;font-size:17px;color:var(--blue)}
+.ec-pr{font-family:var(--fn);font-weight:800;font-size:15px;text-align:right}
+.ec-pr small{display:block;font-size:10px;font-weight:600;color:var(--t3)}
+.ec-nm{font-size:10px;color:var(--t3);margin-bottom:8px;line-height:1.4}
+.ec-r{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-top:1px solid var(--bor)}
+.ec-rl{color:var(--t3)}.ec-rv{font-weight:600;font-family:var(--fn)}
+.ec-cat{display:inline-block;padding:2px 7px;border-radius:5px;font-size:9px;font-weight:700;margin-bottom:6px}
+.cat-lev{background:#FFF0E6;color:#E87800}.cat-idx{background:var(--blue2);color:var(--blue)}.cat-inc{background:var(--grn2);color:var(--grn)}
+
+.sec{margin-bottom:44px}
+.sec-t{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.sec-d{font-size:13px;color:var(--t3);margin-bottom:16px}
+.tabs{display:flex;gap:5px;margin-bottom:16px}
+.tab{padding:7px 18px;border-radius:20px;border:1.5px solid var(--bor);background:var(--card);font-weight:700;font-size:13px;color:var(--t3);cursor:pointer;font-family:var(--f);transition:all .15s}
+.tab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.sg{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
+.ip{background:var(--card);border-radius:var(--r);padding:22px;border:1px solid var(--bor);box-shadow:var(--sh)}
+.rp{background:var(--dk);border-radius:var(--r);padding:22px;color:#fff;box-shadow:var(--sl)}
+.ig{margin-bottom:12px}.ig:last-child{margin-bottom:0}
+.il{display:block;font-size:11px;font-weight:600;color:var(--t3);margin-bottom:4px}
+.if{width:100%;padding:9px 12px;border:1px solid var(--bor);border-radius:var(--rs);font-family:var(--fn);font-size:14px;font-weight:600;background:var(--inp);color:var(--t1);transition:border .15s}
+.if:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(49,130,246,.1)}
+.ir{display:flex;gap:10px}.ir .ig{flex:1}
+.stb{display:flex;gap:2px;margin-bottom:14px;background:var(--inp);border-radius:10px;padding:3px}
+.st2{flex:1;padding:7px;text-align:center;border-radius:8px;font-size:11px;font-weight:600;color:var(--t3);cursor:pointer;border:none;background:transparent;font-family:var(--f);transition:all .15s}
+.st2.on{background:var(--card);color:var(--t1);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ei{display:flex;align-items:center;gap:9px;padding:10px 12px;background:var(--blue2);border-radius:var(--rs);margin-bottom:14px}
+.ei-tk{font-family:var(--fn);font-weight:800;font-size:15px;color:var(--blue)}.ei-nm{font-size:10px;color:var(--t3)}.ei-p{margin-left:auto;font-family:var(--fn);font-weight:800;font-size:14px}
+.krw-box{background:var(--blue2);border:none;color:var(--blue);font-weight:700;text-align:right;cursor:default}
+.rhl{background:rgba(49,130,246,.12);border-radius:var(--rs);padding:14px;margin-bottom:14px}
+.rhl .rl{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:3px}
+.rb{font-family:var(--fn);font-weight:800;font-size:26px;letter-spacing:-.5px;margin-bottom:2px}
+.rsb{font-size:12px;color:rgba(255,255,255,.4);font-family:var(--fn);font-weight:600}
+.rs{margin-bottom:12px}.rst{font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.5px;margin-bottom:5px}
+.rr{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}.rr:last-child{border-bottom:none}
+.rl{font-size:11px;color:rgba(255,255,255,.5)}.rv{font-family:var(--fn);font-weight:700;font-size:12px}.rg{color:var(--grn)}
+.tx{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--rs);padding:12px;margin-bottom:12px}
+.tx-t{font-size:11px;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.tg{display:inline-block;padding:2px 7px;border-radius:7px;font-size:9px;font-weight:700}
+.tg-r{background:rgba(240,68,82,.15);color:var(--red)}.tg-g{background:rgba(0,196,113,.15);color:var(--grn)}
+.cw{background:var(--card);border-radius:var(--r);padding:20px;margin-top:18px;border:1px solid var(--bor);box-shadow:var(--sh)}
+.cw h3{font-size:14px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}.cc{position:relative;width:100%;height:260px}
+.tog-r{display:flex;align-items:center;gap:7px;margin-top:10px;font-size:11px;font-weight:500;color:var(--t3)}
+.tog{position:relative;width:36px;height:20px;background:var(--bor);border-radius:10px;cursor:pointer;transition:.2s;flex-shrink:0}
+.tog.on{background:var(--blue)}.tog::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.15)}.tog.on::after{left:18px}
+.note{padding:10px;background:var(--inp);border-radius:var(--rs);font-size:10px;color:var(--t3);line-height:1.7;margin-top:12px}
+footer{margin-top:44px;padding:28px 0;border-top:1px solid var(--bor);text-align:center}
+footer p{font-size:10px;color:var(--t4);line-height:1.9;max-width:600px;margin:0 auto}
+@media(max-width:860px){.sg{grid-template-columns:1fr}.mkt{grid-template-columns:1fr}.eg{grid-template-columns:1fr 1fr}.hero h1{font-size:26px}}
+@media(max-width:520px){.hero{padding:32px 0 24px}.hero h1{font-size:22px}.eg{grid-template-columns:1fr}.tabs{overflow-x:auto}.tab{white-space:nowrap}.logo span{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="w">
+<div class="logo">ETF STUDIO<span>KS BRIDGE INVESTMENT</span></div>
+<div class="hdr-r"><span class="status" id="apiStatus">대기 중</span><button class="rbtn" onclick="loadAll()">📡 시세 새로고침</button></div>
+</div></header>
+
+<section class="hero"><div class="w">
+<h1>투자의 미래를,<br>숫자로 미리 그려보세요.</h1>
+<p>미국 ETF 장기투자 복리 시뮬레이션과 월분배금 현금흐름을 한 화면에서 계산하세요.</p>
+<div class="pills"><span class="pill">실시간 시세</span><span class="pill">세금 시뮬레이션</span><span class="pill">복리 계산</span><span class="pill">배당 역산</span><span class="pill">USD · KRW</span></div>
+</div></section>
+
+<main class="w">
+
+<div class="mkt">
+<div class="mk"><div class="mk-lb">원 · 달러 환율</div><div class="mk-v" id="fxV">—</div><div class="mk-n" id="fxN">조회 중...</div><div class="mk-i"><input type="text" id="fxR" value="1,380" inputmode="numeric"><span style="font-size:10px;color:var(--t3)">KRW</span></div></div>
+<div class="mk"><div class="mk-lb">NASDAQ-100</div><div class="mk-v" id="nqV">—</div><div class="mk-c" id="nqC"></div><div class="mk-n" id="nqN">조회 중...</div></div>
+<div class="mk"><div class="mk-lb">S&P 500</div><div class="mk-v" id="spV">—</div><div class="mk-c" id="spC"></div><div class="mk-n" id="spN">조회 중...</div></div>
+</div>
+
+<div class="eg" id="etfG">
+<div class="ec"><div class="ec-h"><div><div class="ec-tk">QLD</div></div><div class="ec-pr" id="cpQLD">—</div></div><span class="ec-cat cat-lev">2x 레버리지</span><div class="ec-nm">ProShares Ultra QQQ</div><div class="ec-r"><span class="ec-rl">추종</span><span class="ec-rv">NASDAQ-100 2x</span></div><div class="ec-r"><span class="ec-rl">보수</span><span class="ec-rv">0.95%</span></div><div class="ec-r"><span class="ec-rl">CAGR</span><span class="ec-rv up" id="cgQLD">—</span></div><div class="ec-r"><span class="ec-rl">배당</span><span class="ec-rv">없음</span></div></div>
+<div class="ec"><div class="ec-h"><div><div class="ec-tk">SPY</div></div><div class="ec-pr" id="cpSPY">—</div></div><span class="ec-cat cat-idx">인덱스</span><div class="ec-nm">SPDR S&P 500 ETF Trust</div><div class="ec-r"><span class="ec-rl">추종</span><span class="ec-rv">S&P 500</span></div><div class="ec-r"><span class="ec-rl">보수</span><span class="ec-rv">0.09%</span></div><div class="ec-r"><span class="ec-rl">CAGR</span><span class="ec-rv up" id="cgSPY">—</span></div><div class="ec-r"><span class="ec-rl">배당</span><span class="ec-rv">분기 ~1.3%</span></div></div>
+<div class="ec"><div class="ec-h"><div><div class="ec-tk">QQQI</div></div><div class="ec-pr" id="cpQQQI">—</div></div><span class="ec-cat cat-inc">월분배</span><div class="ec-nm">NEOS Nasdaq-100 High Income</div><div class="ec-r"><span class="ec-rl">전략</span><span class="ec-rv">커버드콜</span></div><div class="ec-r"><span class="ec-rl">보수</span><span class="ec-rv">0.68%</span></div><div class="ec-r"><span class="ec-rl">월분배금</span><span class="ec-rv up" id="dvQQQI">—</span></div><div class="ec-r"><span class="ec-rl">주기</span><span class="ec-rv">매월</span></div></div>
+<div class="ec"><div class="ec-h"><div><div class="ec-tk">JEPQ</div></div><div class="ec-pr" id="cpJEPQ">—</div></div><span class="ec-cat cat-inc">월분배</span><div class="ec-nm">JPMorgan Nasdaq Equity Premium Income</div><div class="ec-r"><span class="ec-rl">전략</span><span class="ec-rv">ELN+커버드콜</span></div><div class="ec-r"><span class="ec-rl">보수</span><span class="ec-rv">0.35%</span></div><div class="ec-r"><span class="ec-rl">월분배금</span><span class="ec-rv up" id="dvJEPQ">—</span></div><div class="ec-r"><span class="ec-rl">주기</span><span class="ec-rv">매월</span></div></div>
+</div>
+
+<!-- SIMULATOR -->
+<section class="sec">
+<div class="sec-t">장기투자 시뮬레이터</div>
+<div class="sec-d">복리 성장과 양도소득세를 시뮬레이션합니다. 수익률은 과거 CAGR 기준입니다.</div>
+<div class="tabs" id="simT"><button class="tab on" onclick="sSim('QLD')">QLD</button><button class="tab" onclick="sSim('SPY')">SPY</button></div>
+<div class="sg">
+<div class="ip">
+<div class="ei"><div><div class="ei-tk" id="sTk">QLD</div><div class="ei-nm" id="sNm">ProShares Ultra QQQ</div></div><div class="ei-p" id="sPd">—</div></div>
+<div class="stb"><button class="st2 on" onclick="sType('lump')">거치식</button><button class="st2" onclick="sType('monthly')">월 적립</button><button class="st2" onclick="sType('daily')">일 적립</button></div>
+<div class="ir"><div class="ig"><label class="il">ETF 가격 (USD)</label><input type="text" class="if" id="sP" value="95.00" inputmode="decimal"></div><div class="ig"><label class="il">KRW 환산</label><div class="if krw-box" id="sPK">—</div></div></div>
+<div class="ig"><label class="il">초기 투자금 (KRW)</label><input type="text" class="if" id="sI" value="10,000,000" inputmode="numeric"></div>
+<div class="ig" id="sCG"><label class="il" id="sCL">월 적립금 (KRW)</label><input type="text" class="if" id="sC" value="1,000,000" inputmode="numeric"></div>
+<div class="ir"><div class="ig"><label class="il">투자 기간 (년)</label><input type="text" class="if" id="sY" value="10" inputmode="numeric"></div><div class="ig"><label class="il">연평균 수익률 (%)</label><input type="text" class="if" id="sR" value="25" inputmode="decimal"></div></div>
+<div class="ir"><div class="ig"><label class="il">보유 수량 (주)</label><input type="text" class="if" id="sCS" value="0" inputmode="numeric"></div><div class="ig"><label class="il">목표 수량 (주)</label><input type="text" class="if" id="sTS" value="100" inputmode="numeric"></div></div>
+<div class="ig"><label class="il">목표 평가금액 (KRW)</label><input type="text" class="if" id="sTA" value="100,000,000" inputmode="numeric"></div>
+<div class="tog-r"><div class="tog" id="infT" onclick="togInf()"></div>인플레이션 보정 (연 3%)</div>
+</div>
+<div class="rp">
+<div class="rhl"><div class="rl">투자 종료 시 예상 평가금액</div><div class="rb" id="rFK">₩0</div><div class="rsb" id="rFU">$0.00</div></div>
+<div class="rs"><div class="rst">투자 요약</div>
+<div class="rr"><span class="rl">총 투자 원금</span><span class="rv" id="rTI">₩0</span></div>
+<div class="rr"><span class="rl">명목 수익</span><span class="rv rg" id="rPr">₩0</span></div>
+<div class="rr"><span class="rl">수익률</span><span class="rv rg" id="rROI">0%</span></div>
+<div class="rr" id="rInf" style="display:none"><span class="rl">실질 가치 (물가 보정)</span><span class="rv" style="color:#FFD43B" id="rReal">₩0</span></div></div>
+<div class="tx"><div class="tx-t">🏛 양도소득세 <span class="tg tg-r">세금</span></div>
+<div class="rr"><span class="rl">매매차익</span><span class="rv" id="txG">₩0</span></div>
+<div class="rr"><span class="rl">기본공제</span><span class="rv">-₩2,500,000</span></div>
+<div class="rr"><span class="rl">과세표준</span><span class="rv" id="txB">₩0</span></div>
+<div class="rr"><span class="rl">세액 (22%)</span><span class="rv" style="color:var(--red)" id="txA">₩0</span></div>
+<div class="rr" style="border-top:1px solid rgba(255,255,255,.1);padding-top:7px;margin-top:3px"><span class="rl" style="font-weight:700;color:rgba(255,255,255,.7)">세후 실수익</span><span class="rv rg" id="txN">₩0</span></div></div>
+<div class="rs"><div class="rst">보유 · 구매</div>
+<div class="rr"><span class="rl">현재 보유 평가</span><span class="rv" id="rCur">$0 / ₩0</span></div>
+<div class="rr"><span class="rl">초기투자 구매 가능</span><span class="rv" id="rBuy">0주</span></div>
+<div class="rr"><span class="rl">목표 수량 필요 금액</span><span class="rv" id="rTC">₩0</span></div>
+<div class="rr"><span class="rl">목표 금액 달성</span><span class="rv" id="rTT">—</span></div></div>
+</div></div>
+<div class="cw"><h3>📈 자산 성장 추이</h3><div class="cc"><canvas id="gChart"></canvas></div></div>
+</section>
+
+<!-- DIVIDEND -->
+<section class="sec">
+<div class="sec-t">월분배금 계산기</div>
+<div class="sec-d">배당 현금흐름과 배당소득세를 계산합니다.</div>
+<div class="tabs" id="divT"><button class="tab on" onclick="sDiv('QQQI')">QQQI</button><button class="tab" onclick="sDiv('JEPQ')">JEPQ</button></div>
+<div class="sg">
+<div class="ip">
+<div class="ei"><div><div class="ei-tk" id="dTk">QQQI</div><div class="ei-nm" id="dNm">NEOS Nasdaq-100 High Income ETF</div></div><div class="ei-p" id="dPd">—</div></div>
+<div class="ir"><div class="ig"><label class="il">ETF 가격 (USD)</label><input type="text" class="if" id="dP" value="50.00" inputmode="decimal"></div><div class="ig"><label class="il">KRW 환산</label><div class="if krw-box" id="dPK">—</div></div></div>
+<div class="ig"><label class="il">보유 수량 (주)</label><input type="text" class="if" id="dS" value="100" inputmode="numeric"></div>
+<div class="ig"><label class="il">최근 주당 월분배금 (USD)</label><input type="text" class="if" id="dD" value="0.5000" inputmode="decimal"></div>
+<div class="ig"><label class="il">미국 원천징수율 (%)</label><input type="text" class="if" id="dTx" value="15" inputmode="decimal"></div>
+<div class="ig"><label class="il">목표 월 세후 분배금 (KRW)</label><input type="text" class="if" id="dTM" value="1,000,000" inputmode="numeric"></div>
+<div class="note">최근 1회 분배금 기준 단순 추정입니다. 분배금은 매월 변동되며 세금은 개인 상황에 따라 다릅니다.</div>
+</div>
+<div class="rp">
+<div class="rhl"><div class="rl">월 실수령 배당금</div><div class="rb" id="dMAK">₩0</div><div class="rsb" id="dMAU">$0.00</div></div>
+<div class="rs"><div class="rst">보유 현황</div>
+<div class="rr"><span class="rl">평가금액 (USD)</span><span class="rv" id="dHU">$0</span></div>
+<div class="rr"><span class="rl">평가금액 (KRW)</span><span class="rv" id="dHK">₩0</span></div></div>
+<div class="rs"><div class="rst">분배금 상세</div>
+<div class="rr"><span class="rl">월 세전</span><span class="rv" id="dMB">$0 / ₩0</span></div>
+<div class="rr"><span class="rl">월 세후</span><span class="rv" id="dMA">$0 / ₩0</span></div>
+<div class="rr"><span class="rl">연 세전</span><span class="rv" id="dAB">$0 / ₩0</span></div>
+<div class="rr"><span class="rl">연 세후</span><span class="rv" id="dAA">$0 / ₩0</span></div></div>
+<div class="tx"><div class="tx-t">🏛 배당소득세 <span class="tg tg-r">세금</span></div>
+<div class="rr"><span class="rl">연 배당 총액</span><span class="rv" id="dtGr">₩0</span></div>
+<div class="rr"><span class="rl">미국 원천징수 (15%)</span><span class="rv" id="dtUS">-₩0</span></div>
+<div class="rr"><span class="rl">한국 배당소득세 (14%)</span><span class="rv" id="dtKR">₩0</span></div>
+<div class="rr"><span class="rl">한국 추가 납부</span><span class="rv" id="dtAd">₩0</span></div>
+<div class="rr"><span class="rl">종합과세 해당</span><span class="rv" id="dtCo">—</span></div>
+<div class="rr" style="border-top:1px solid rgba(255,255,255,.1);padding-top:7px;margin-top:3px"><span class="rl" style="font-weight:700;color:rgba(255,255,255,.7)">연간 실수령</span><span class="rv rg" id="dtNt">₩0</span></div>
+<div class="rr"><span class="rl" style="font-weight:700;color:rgba(255,255,255,.7)">월 실수령</span><span class="rv rg" id="dtNM">₩0</span></div></div>
+<div class="rs"><div class="rst">목표 달성</div>
+<div class="rr"><span class="rl">필요 주식 수</span><span class="rv" id="dRS">0주</span></div>
+<div class="rr"><span class="rl">필요 투자 원금</span><span class="rv" id="dRU">$0 / ₩0</span></div></div>
+</div></div>
+</section>
+</main>
+
+<footer><div class="w"><p>
+ETF STUDIO는 투자 참고용 시뮬레이터이며, 투자 권유가 아닙니다. 양도소득세 · 배당소득세는 2026년 기준 일반 세율 적용 단순 추정이며 개인 상황에 따라 다릅니다.<br>
+과거 수익률은 미래 수익률을 보장하지 않습니다. 시세 데이터는 Yahoo Finance 기준이며 지연될 수 있습니다.<br>
+<span style="display:block;margin-top:6px;font-family:var(--fn);letter-spacing:.3px;font-weight:600">ETF STUDIO · KS Bridge Investment © 2026</span>
+</p></div></footer>
+
+<script>
+const ED={QLD:{n:'ProShares Ultra QQQ',p:95,r:25},SPY:{n:'SPDR S&P 500 ETF Trust',p:605,r:12},QQQI:{n:'NEOS Nasdaq-100 High Income ETF',p:50,d:.50},JEPQ:{n:'JPMorgan Nasdaq Equity Premium Income ETF',p:55,d:.45}};
+let sE='QLD',dE='QQQI',iT='lump',inf=false,gC=null;
+
+function pN(s){if(!s)return 0;return parseFloat(String(s).replace(/[^0-9.\-]/g,''))||0}
+function fN(n,d){if(n==null||isNaN(n))return'0';d=d??0;const p=Math.abs(n).toFixed(d).split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return(n<0?'-':'')+p.join('.')}
+function fK(n){return'₩'+fN(n)}function fU(n){return'$'+fN(n,2)}
+function gFX(){return pN(document.getElementById('fxR').value)||1380}
+function sIF(el,v){const p=el.selectionStart,o=el.value.length;el.value=fN(v);const d=el.value.length;el.setSelectionRange(Math.max(0,p+(d-o)),Math.max(0,p+(d-o)))}
+
+/* ===== API FETCH ===== */
+async function loadAll(){
+const st=document.getElementById('apiStatus');
+st.textContent='조회 중...';st.className='status';
+try{
+const [fx,qld,spy,qqqi,jepq,ndx,gspc]=await Promise.allSettled([
+fetch('/api/fx').then(r=>r.json()),
+fetch('/api/market?symbol=QLD').then(r=>r.json()),
+fetch('/api/market?symbol=SPY').then(r=>r.json()),
+fetch('/api/market?symbol=QQQI').then(r=>r.json()),
+fetch('/api/market?symbol=JEPQ').then(r=>r.json()),
+fetch('/api/market?symbol=^NDX').then(r=>r.json()),
+fetch('/api/market?symbol=^GSPC').then(r=>r.json()),
+]);
+
+if(fx.status==='fulfilled'&&fx.value.rate){
+const r=fx.value.rate;document.getElementById('fxR').value=fN(r);document.getElementById('fxV').textContent=fN(r,2);document.getElementById('fxN').textContent='실시간 · Open Exchange Rates';
+}
+
+function applyETF(res,tk){
+if(res.status!=='fulfilled'||res.value.error)return;
+const d=res.value;
+if(d.price!=null)ED[tk].p=d.price;
+if(d.cagr!=null){
+const el=document.getElementById('cg'+tk);if(el)el.textContent=fN(d.cagr,1)+'%';
+if(tk==='QLD'||tk==='SPY')ED[tk].r=Math.round(d.cagr);
+}
+if(d.lastDistribution!=null&&ED[tk].d!==undefined)ED[tk].d=d.lastDistribution;
+const cp=document.getElementById('cp'+tk);
+if(cp)cp.innerHTML=fU(d.price)+'<small>'+fK(Math.round(d.price*gFX()))+'</small>';
+if(d.changePct!=null){
+const cls=d.changePct>=0?'up':'dn';const sign=d.changePct>=0?'+':'';
+if(cp)cp.innerHTML+=' <span class="'+cls+'" style="font-size:11px">'+sign+fN(d.changePct,2)+'%</span>';
+}
+const dv=document.getElementById('dv'+tk);
+if(dv&&d.lastDistribution!=null)dv.textContent='$'+fN(d.lastDistribution,4);
+}
+applyETF(qld,'QLD');applyETF(spy,'SPY');applyETF(qqqi,'QQQI');applyETF(jepq,'JEPQ');
+
+function applyIdx(res,vId,cId,nId){
+if(res.status!=='fulfilled'||res.value.error)return;
+const d=res.value;
+document.getElementById(vId).textContent=fN(d.price,2);
+if(d.changePct!=null){const cls=d.changePct>=0?'up':'dn';const sign=d.changePct>=0?'+':'';document.getElementById(cId).innerHTML='<span class="'+cls+'">'+sign+fN(d.changePct,2)+'%</span>'}
+document.getElementById(nId).textContent='실시간 · Yahoo Finance';
+}
+applyIdx(ndx,'nqV','nqC','nqN');applyIdx(gspc,'spV','spC','spN');
+
+// Apply to simulators
+if(sE)document.getElementById('sP').value=ED[sE].p.toFixed(2);
+if(sE&&ED[sE].r)document.getElementById('sR').value=ED[sE].r;
+if(dE)document.getElementById('dP').value=ED[dE].p.toFixed(2);
+if(dE&&ED[dE].d)document.getElementById('dD').value=ED[dE].d.toFixed(4);
+
+uSim();uDiv();
+st.textContent='실시간';st.className='status ok';
+}catch(e){console.error(e);st.textContent='조회 실패';st.className='status'}
+}
+
+/* ===== SIMULATOR ===== */
+function sSim(e){sE=e;document.querySelectorAll('#simT .tab').forEach(b=>b.classList.toggle('on',b.textContent===e));const d=ED[e];document.getElementById('sTk').textContent=e;document.getElementById('sNm').textContent=d.n;document.getElementById('sP').value=d.p.toFixed(2);document.getElementById('sR').value=d.r;uSim()}
+function sType(t){iT=t;document.querySelectorAll('.st2').forEach((b,i)=>b.classList.toggle('on',['lump','monthly','daily'][i]===t));const g=document.getElementById('sCG');if(t==='lump')g.style.display='none';else{g.style.display='';document.getElementById('sCL').textContent=t==='monthly'?'월 적립금 (KRW)':'일 적립금 (KRW/거래일)'}uSim()}
+function togInf(){inf=!inf;document.getElementById('infT').classList.toggle('on',inf);document.getElementById('rInf').style.display=inf?'flex':'none';uSim()}
+
+function uSim(){
+const fx=gFX(),pr=pN(document.getElementById('sP').value),ini=pN(document.getElementById('sI').value),con=pN(document.getElementById('sC').value),yr=pN(document.getElementById('sY').value),ar=pN(document.getElementById('sR').value)/100,cs=pN(document.getElementById('sCS').value),ts=pN(document.getElementById('sTS').value),ta=pN(document.getElementById('sTA').value);
+document.getElementById('sPd').textContent=fU(pr)+' / '+fK(Math.round(pr*fx));
+document.getElementById('sPK').textContent=fK(Math.round(pr*fx));
+let ti=ini,fv=0;const mr=ar/12,tm=Math.max(0,Math.round(yr*12)),cl=[],ci=[],cv=[];
+if(iT==='lump'){fv=ini*Math.pow(1+ar,yr);for(let y=0;y<=yr;y++){cl.push(y+'년');ci.push(ini);cv.push(ini*Math.pow(1+ar,y))}}
+else if(iT==='monthly'){let b=ini;ti=ini;for(let m=0;m<=tm;m++){if(m%12===0){cl.push((m/12)+'년');ci.push(ti);cv.push(b)}if(m<tm){b=b*(1+mr)+con;ti+=con}}fv=b}
+else{let b=ini;ti=ini;const dr=ar/252,td=Math.round(yr*252);for(let d=0;d<=td;d++){if(d%252===0){cl.push((d/252)+'년');ci.push(ti);cv.push(b)}if(d<td){b=b*(1+dr)+con;ti+=con}}fv=b}
+const pf=fv-ti,roi=ti>0?(pf/ti)*100:0;
+document.getElementById('rFK').textContent=fK(fv);document.getElementById('rFU').textContent=fU(fv/fx);
+document.getElementById('rTI').textContent=fK(ti);document.getElementById('rPr').textContent=(pf>=0?'+':'')+fK(pf);document.getElementById('rROI').textContent=(roi>=0?'+':'')+fN(roi,1)+'%';
+if(inf&&yr>0)document.getElementById('rReal').textContent=fK(fv/Math.pow(1.03,yr));
+const gn=Math.max(0,pf),txBs=Math.max(0,gn-2500000),txAm=Math.round(txBs*.22),net=pf-txAm;
+document.getElementById('txG').textContent=fK(gn);document.getElementById('txB').textContent=fK(txBs);document.getElementById('txA').textContent='-'+fK(txAm);document.getElementById('txN').textContent=(net>=0?'+':'')+fK(net);
+const hU=cs*pr,hK=hU*fx;document.getElementById('rCur').textContent=fU(hU)+' / '+fK(hK);
+const pK=pr*fx,buy=pK>0?Math.floor(ini/pK):0;document.getElementById('rBuy').textContent=fN(buy)+'주';document.getElementById('rTC').textContent=fU(ts*pr)+' / '+fK(Math.round(ts*pK));
+if(ta>0&&ar>0&&ini>0){if(iT==='lump'){const yt=Math.log(ta/ini)/Math.log(1+ar);if(yt>0&&isFinite(yt))document.getElementById('rTT').textContent=Math.floor(yt)+'년 '+Math.round((yt%1)*12)+'개월';else document.getElementById('rTT').textContent='달성 불가'}
+else{let b=ini,mo=0;const mc=iT==='monthly'?con:con*20;while(b<ta&&mo<600){b=b*(1+mr)+mc;mo++}document.getElementById('rTT').textContent=mo<600?Math.floor(mo/12)+'년 '+(mo%12)+'개월':'50년 이상'}}
+else document.getElementById('rTT').textContent='—';
+rChart(cl,ci,cv)}
+
+function rChart(lb,inv,val){
+const ctx=document.getElementById('gChart');if(gC)gC.destroy();
+const dk=window.matchMedia('(prefers-color-scheme:dark)').matches;const tc=dk?'#6B6B6F':'#8B95A1';
+gC=new Chart(ctx,{type:'line',data:{labels:lb,datasets:[{label:'예상 평가금액',data:val,borderColor:'#3182F6',backgroundColor:'rgba(49,130,246,.06)',fill:true,tension:.35,borderWidth:2.5,pointRadius:0,pointHitRadius:10},{label:'투자 원금',data:inv,borderColor:tc,backgroundColor:'transparent',borderDash:[5,4],tension:0,borderWidth:1.5,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{position:'top',labels:{font:{family:"'Pretendard',sans-serif",size:11},color:tc,boxWidth:16,padding:12}},tooltip:{backgroundColor:dk?'#2C2D30':'#17171C',titleFont:{family:"'Nunito',sans-serif",size:11},bodyFont:{family:"'Nunito',sans-serif",size:12},padding:10,cornerRadius:10,callbacks:{label:c=>c.dataset.label+': ₩'+fN(c.raw)}}},scales:{x:{grid:{display:false},ticks:{font:{family:"'Nunito',sans-serif",size:10},color:tc,maxTicksLimit:11}},y:{grid:{color:dk?'rgba(255,255,255,.04)':'rgba(0,0,0,.04)'},ticks:{font:{family:"'Nunito',sans-serif",size:10},color:tc,callback:v=>v>=1e8?(v/1e8).toFixed(0)+'억':v>=1e4?(v/1e4).toFixed(0)+'만':v}}}}})}
+
+/* ===== DIVIDEND ===== */
+function sDiv(e){dE=e;document.querySelectorAll('#divT .tab').forEach(b=>b.classList.toggle('on',b.textContent===e));const d=ED[e];document.getElementById('dTk').textContent=e;document.getElementById('dNm').textContent=d.n;document.getElementById('dP').value=d.p.toFixed(2);document.getElementById('dD').value=d.d.toFixed(4);uDiv()}
+function uDiv(){
+const fx=gFX(),pr=pN(document.getElementById('dP').value),sh=pN(document.getElementById('dS').value),dps=pN(document.getElementById('dD').value),txR=pN(document.getElementById('dTx').value)/100,tgt=pN(document.getElementById('dTM').value);
+document.getElementById('dPd').textContent=fU(pr)+' / '+fK(Math.round(pr*fx));
+document.getElementById('dPK').textContent=fK(Math.round(pr*fx));
+const hU=sh*pr,hK=hU*fx;document.getElementById('dHU').textContent=fU(hU);document.getElementById('dHK').textContent=fK(hK);
+const mbU=sh*dps,maU=mbU*(1-txR),mbK=mbU*fx,maK=maU*fx;
+document.getElementById('dMAK').textContent=fK(Math.round(maK));document.getElementById('dMAU').textContent=fU(maU);
+document.getElementById('dMB').textContent=fU(mbU)+' / '+fK(Math.round(mbK));document.getElementById('dMA').textContent=fU(maU)+' / '+fK(Math.round(maK));
+document.getElementById('dAB').textContent=fU(mbU*12)+' / '+fK(Math.round(mbK*12));document.getElementById('dAA').textContent=fU(maU*12)+' / '+fK(Math.round(maK*12));
+const aGK=Math.round(mbK*12),usW=Math.round(aGK*txR),krT=Math.round(aGK*.14),ad=Math.max(0,krT-usW),tot=usW+ad,aN=aGK-tot;
+document.getElementById('dtGr').textContent=fK(aGK);document.getElementById('dtUS').textContent='-'+fK(usW);document.getElementById('dtKR').textContent=fK(krT);
+document.getElementById('dtAd').textContent=ad>0?'-'+fK(ad):'₩0 (미국세로 충당)';document.getElementById('dtAd').style.color=ad>0?'var(--red)':'var(--grn)';
+document.getElementById('dtCo').innerHTML=aGK>20000000?'<span class="tg tg-r">해당</span> 2,000만원 초과':'<span class="tg tg-g">미해당</span>';
+document.getElementById('dtNt').textContent=fK(aN);document.getElementById('dtNM').textContent=fK(Math.round(aN/12));
+const atD=dps*(1-txR),tU=tgt/fx;let rs=0;if(atD>0)rs=Math.ceil(tU/atD);
+document.getElementById('dRS').textContent=fN(rs)+'주';document.getElementById('dRU').textContent=fU(rs*pr)+' / '+fK(Math.round(rs*pr*fx))}
+
+/* ===== EVENTS ===== */
+function wire(){
+['sI','sC','sTA'].forEach(id=>{document.getElementById(id).addEventListener('input',function(){const r=pN(this.value);if(r>0)sIF(this,r);uSim()})});
+['sP','sR','sY','sCS','sTS'].forEach(id=>document.getElementById(id).addEventListener('input',uSim));
+document.getElementById('dTM').addEventListener('input',function(){const r=pN(this.value);if(r>0)sIF(this,r);uDiv()});
+['dP','dD','dTx','dS'].forEach(id=>document.getElementById(id).addEventListener('input',uDiv));
+document.getElementById('fxR').addEventListener('input',function(){const r=pN(this.value);if(r>0)sIF(this,r);document.getElementById('fxV').textContent=fN(gFX(),2);uSim();uDiv()})}
+
+document.addEventListener('DOMContentLoaded',()=>{wire();sType('lump');uSim();uDiv();loadAll()});
+</script>
+</body>
+</html>
